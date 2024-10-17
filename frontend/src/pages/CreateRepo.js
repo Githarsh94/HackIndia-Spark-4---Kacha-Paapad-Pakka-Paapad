@@ -23,9 +23,9 @@ const CreateRepo = ({ user }) => {
         }
     }, [user]);
 
-    const handleFileUpload = async (files) => {
+    const handleFileUpload = async (selectedFiles) => {
         const formData = new FormData();
-        for (let file of files) {
+        for (let file of selectedFiles) {
             formData.append('file', file);
         }
 
@@ -44,7 +44,7 @@ const CreateRepo = ({ user }) => {
 
             const data = await response.json();
             const newFiles = data.map(file => ({ fileName: file.fileName, fileHash: file.fileHash }));
-            setFiles([...files, ...newFiles]);
+            setFiles(prevFiles => [...prevFiles, ...newFiles]);
         } catch (error) {
             console.error('Error uploading files:', error);
         }

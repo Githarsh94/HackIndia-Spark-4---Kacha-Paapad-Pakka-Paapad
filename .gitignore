@@ -6,7 +6,7 @@
 /frontend/.pnp.js
 
 /backend/node_modules
-
+/backend/.env
 
 # testing
 /frontend/coverage

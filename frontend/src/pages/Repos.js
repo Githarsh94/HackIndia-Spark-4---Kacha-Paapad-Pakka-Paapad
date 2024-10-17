@@ -41,23 +41,22 @@ const Repos = () => {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Repositories</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <h1 className="text-3xl font-bold mb-6 text-center">Repositories</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {repos.filter(repo => repo !== null).map((repo, index) => (
-
-                    <div key={index} className="bg-white shadow-md rounded-lg p-4">
-                        <h2 className="text-xl font-semibold">{repo.Name}</h2>
-                        <p className="text-gray-700">{repo.description}</p>
-                        <p className="text-gray-500">Visibility: {repo.visibility}</p>
-                        <p className="text-gray-500">Readme: {repo.readme ? 'Yes' : 'No'}</p>
-                        <p className="text-gray-500">Gitignore: {repo.gitignore}</p>
-                        <p className="text-gray-500">License: {repo.license}</p>
-                        <div className="mt-2">
-                            <h3 className="text-lg font-medium">File Hashes:</h3>
+                    <div key={index} className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                        <h2 className="text-2xl font-semibold mb-2">{repo.Name}</h2>
+                        <p className="text-gray-700 mb-2">{repo.description}</p>
+                        <p className="text-gray-500 mb-1">Visibility: {repo.visibility}</p>
+                        <p className="text-gray-500 mb-1">Readme: {repo.readme ? 'Yes' : 'No'}</p>
+                        <p className="text-gray-500 mb-1">Gitignore: {repo.gitignore}</p>
+                        <p className="text-gray-500 mb-1">License: {repo.license}</p>
+                        <div className="mt-4">
+                            <h3 className="text-lg font-medium mb-2">File Hashes:</h3>
                             <ul className="list-disc list-inside">
                                 {repo.files && repo.files.map((file, idx) => (
                                     <li key={idx}>
-                                        <a href={`https://ipfs.io/ipfs/${file.fileHash}`} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+                                        <a href={`https://ipfs.io/ipfs/${file.fileHash}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
                                             {file.fileName}
                                         </a>
                                     </li>
@@ -69,7 +68,7 @@ const Repos = () => {
             </div>
             <button
                 onClick={() => navigate('/create-repo')}
-                className="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg"
+                className="fixed bottom-4 right-4 bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-300"
             >
                 Create Repo
             </button>
